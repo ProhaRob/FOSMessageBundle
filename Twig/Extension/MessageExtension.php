@@ -9,7 +9,7 @@ use FOS\MessageBundle\Provider\ProviderInterface;
 use FOS\MessageBundle\Security\AuthorizerInterface;
 use FOS\MessageBundle\Security\ParticipantProviderInterface;
 
-class MessageExtension extends \Twig_Extension
+class MessageExtension extends \Twig\Extension\AbstractExtension
 {
     protected $participantProvider;
     protected $provider;
@@ -30,10 +30,10 @@ class MessageExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('fos_message_is_read', array($this, 'isRead')),
-            new \Twig_SimpleFunction('fos_message_nb_unread', array($this, 'getNbUnread')),
-            new \Twig_SimpleFunction('fos_message_can_delete_thread', array($this, 'canDeleteThread')),
-            new \Twig_SimpleFunction('fos_message_deleted_by_participant', array($this, 'isThreadDeletedByParticipant')),
+            new \Twig\TwigFunction('fos_message_is_read', array($this, 'isRead')),
+            new \Twig\TwigFunction('fos_message_nb_unread', array($this, 'getNbUnread')),
+            new \Twig\TwigFunction('fos_message_can_delete_thread', array($this, 'canDeleteThread')),
+            new \Twig\TwigFunction('fos_message_deleted_by_participant', array($this, 'isThreadDeletedByParticipant')),
         );
     }
 
